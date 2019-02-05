@@ -49,13 +49,32 @@ import sys
 
 def mimic_dict(filename):
     """Returns mimic dict mapping each word to list of words which follow it."""
-    # +++your code here+++
+    
+    mimic_dict = {}
+    file = open(filename)
+    text = file.read()
+    words = text.split()
+    prev_word = ''
+    for word in words:
+        if prev_word not in mimic_dict:
+            mimic_dict[prev_word] = [word]
+        else:
+            mimic_dict[prev_word].append(word)
+    mimic_dict[prev_word] = mimic_dict.get(prev_word, []) + [word]
+    return mimic_dict
+
     raise NotImplementedError("Get to Work!")
 
 
 def print_mimic(mimic_dict, word):
     """Given mimic dict and start word, prints 200 random words."""
-    # +++your code here+++
+    values = []
+    for i in range(200):
+        words = random.choice(mimic_dict.get(word))
+        values.append(words)
+    print ' '.join(values)
+    return ' '.join(values)
+    
     raise NotImplementedError("Get to Work!")
 
 
