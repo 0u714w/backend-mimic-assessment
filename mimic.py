@@ -61,7 +61,9 @@ def mimic_dict(filename):
             mimic_dict[prev_word] = [word]
         else:
             mimic_dict[prev_word].append(word)
-    prev_word = word
+        prev_word = word 
+    print len(mimic_dict.keys())
+
     return mimic_dict
 
     
@@ -69,10 +71,10 @@ def mimic_dict(filename):
 
 def print_mimic(mimic_dict, word):
     """Given mimic dict and start word, prints 200 random words."""
-    values = []
+    values = [word]
     for i in range(200):
-        words = random.choice(mimic_dict.get(word))
-        values.append(words)
+        word = random.choice(mimic_dict.get(word))
+        values.append(word)
     print ' '.join(values)
     return ' '.join(values)
     
