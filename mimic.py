@@ -51,8 +51,9 @@ def mimic_dict(filename):
     """Returns mimic dict mapping each word to list of words which follow it."""
     
     mimic_dict = {}
-    file = open(filename)
+    file = open(filename, 'r')
     text = file.read()
+    file.close()
     words = text.split()
     prev_word = ''
     for word in words:
@@ -60,10 +61,10 @@ def mimic_dict(filename):
             mimic_dict[prev_word] = [word]
         else:
             mimic_dict[prev_word].append(word)
-    mimic_dict[prev_word] = mimic_dict.get(prev_word, []) + [word]
+    prev_word = word
     return mimic_dict
 
-    raise NotImplementedError("Get to Work!")
+    
 
 
 def print_mimic(mimic_dict, word):
@@ -75,7 +76,6 @@ def print_mimic(mimic_dict, word):
     print ' '.join(values)
     return ' '.join(values)
     
-    raise NotImplementedError("Get to Work!")
 
 
 # Provided main(), calls mimic_dict() and mimic()
